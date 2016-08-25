@@ -7,7 +7,7 @@ import java.util.Set;
 import java.util.TreeMap;
 
 
-public class SSC_Format_oneleap {
+public class Formatdata_GTgraphToOneleap {
 
 	public static TreeMap<Integer, TreeMap<Integer, Integer>> keys = new TreeMap<Integer, TreeMap<Integer, Integer>>();
 

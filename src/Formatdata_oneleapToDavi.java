@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.HashSet;
 
 
-public class GeneratotDaviData {
+public class Formatdata_oneleapToDavi {
 
 
 	@SuppressWarnings("unchecked")
@@ -23,7 +23,7 @@ public class GeneratotDaviData {
 //		
 //		String infile_name = "ssc/ssca-20-40_davi";
 //		String outfile_name = "ssc/ssca-20-40_davi";
-//
+
 //		File filein = new File(inputfile_path + infile_name);
 //		BufferedReader readerin = new BufferedReader(new FileReader(filein));
 //
@@ -38,7 +38,7 @@ public class GeneratotDaviData {
 		File filein = new File(args[0]);
 		BufferedReader readerin = new BufferedReader(new FileReader(filein));
 
-		FileWriter writerfile = new FileWriter(args[1] + "_temp_data.txt");
+		FileWriter writerfile = new FileWriter(args[0]+"_tempDavi");
 		BufferedWriter bw = new BufferedWriter(writerfile);
 		
 		
@@ -49,6 +49,10 @@ public class GeneratotDaviData {
 			totalnumber++;
 			
 			String[] testDu = brin.split("\t");
+			if(testDu.length !=2){
+				testDu = brin.split(" ");
+			}
+				
 
 			int a = Integer.parseInt(testDu[0]);
 			int b = Integer.parseInt(testDu[1]);
@@ -72,7 +76,7 @@ public class GeneratotDaviData {
 		readerin.close();
 		bw.close();
 		
-		File fileinout = new File(args[1] + "_temp_data.txt");
+		File fileinout = new File(args[0]+"_tempDavi");
 		BufferedReader readerinout = new BufferedReader(new FileReader(fileinout));
 		FileWriter writerfileout = new FileWriter(args[1]);
 		BufferedWriter bwout = new BufferedWriter(writerfileout);

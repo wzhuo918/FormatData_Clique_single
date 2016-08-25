@@ -3,10 +3,13 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeMap;
 
-public class SortNoDuplicate_oneleap {
+import javax.swing.text.html.HTMLDocument.Iterator;
+
+public class Formatdata_sortingOneleap {
 
 	public static TreeMap<Integer, TreeMap<Integer, Integer>> keys = new TreeMap<Integer, TreeMap<Integer, Integer>>();
 
@@ -14,8 +17,8 @@ public class SortNoDuplicate_oneleap {
 	public static void main(String[] args) throws Exception {
 
 		//windows 本地运行时的程序
-		//		String fileName = "E:/博士/论文/自己/SelfClique/房clique/dataset/ssc/ssca-20-40_oneleap";
-		//		String outfileName="E:/博士/论文/自己/SelfClique/房clique/dataset/ssc/ssca-20-40_davi";
+//				String fileName = "E:/brock200_2.clq";
+//				String outfileName="E:/brock200_2.clq_davi";
 
 		//集群运行时的程序
 		if (args.length != 2) {
@@ -31,11 +34,15 @@ public class SortNoDuplicate_oneleap {
 		String br;
 		while ((br = reader.readLine()) != null) {
 			String[] s = br.split(" ");	//读入的是空格
+			
+			if(s.length !=2 ){
+				s = br.split("\t");
+			}
 
 			if (s.length == 2) {
 				int a = Integer.parseInt(s[0]);
 				int b = Integer.parseInt(s[1]);
-
+				
 				if (a > b) {
 					if (keys.containsKey(b) == false) {
 						TreeMap<Integer, Integer> value1 = new TreeMap<Integer, Integer>();
@@ -70,13 +77,11 @@ public class SortNoDuplicate_oneleap {
 			Set<java.util.Map.Entry<Integer, Integer>> keysets = entry.getValue().entrySet();
 			for (java.util.Map.Entry<Integer, Integer> keyentry : keysets) {
 				bw.write(entry.getKey() + "\t" + keyentry.getKey() + "\n"); //写出的为tab
-
 				//System.out.println(entry.getKey()  +"	"+ keyentry.getKey());
 			}
 			// System.out.println();
 		}
 
 		bw.close();
-
 	}
 }
